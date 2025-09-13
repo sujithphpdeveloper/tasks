@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\TaskStatus;
+use App\Enums\TaskPriority;
 
 return new class extends Migration
 {
@@ -15,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending')->index();
-            $table->enum('priority', ['low', 'medium', 'high'])->default('medium')->index();
+            $table->enum('status', TaskStatus::values())->default(TaskStatus::PENDING);
+            $table->enum('priority', TaskPriority::values())->default(TaskPriority::MEDIUM);
             $table->date('due_date')->nullable();
             $table->foreignId('assigned_to')->nullable()->constrained('users');
             $table->integer('version')->default(1);

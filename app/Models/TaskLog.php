@@ -12,7 +12,11 @@ class TaskLog extends Model
     /** @use HasFactory<\Database\Factories\TaskLogFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['taks_id', 'tag_id', 'operation_type', 'changes'];
+    protected $fillable = ['task_id', 'user_id', 'operation_type', 'changes'];
+
+    protected $casts = [
+        'changes' => 'array',
+    ];
 
     /***
      * One Log will be related to one Task

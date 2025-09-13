@@ -14,7 +14,6 @@ class Task extends Model
     /** @use HasFactory<\Database\Factories\TaskFactory> */
     use HasFactory, SoftDeletes;
 
-    // Mass Assignment fields
     protected $fillable = ['title', 'description', 'status', 'priority', 'due_date', 'assigned_to', 'metadata', 'version'];
 
     protected $casts = [
