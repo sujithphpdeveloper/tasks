@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('status', TaskStatus::values())->default(TaskStatus::PENDING);
-            $table->enum('priority', TaskPriority::values())->default(TaskPriority::MEDIUM);
-            $table->date('due_date')->nullable();
+            $table->enum('status', TaskStatus::values())->default(TaskStatus::PENDING)->index();
+            $table->enum('priority', TaskPriority::values())->default(TaskPriority::MEDIUM)->index();
+            $table->date('due_date')->nullable()->index();
             $table->foreignId('assigned_to')->nullable()->constrained('users');
             $table->integer('version')->default(1);
             $table->json('metadata')->nullable();

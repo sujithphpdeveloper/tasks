@@ -4,11 +4,10 @@ namespace App\Http\Requests;
 
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
-use App\Rules\DueDateNotPast;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreTaskRequest extends FormRequest
+class TaskFilterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +25,18 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:5', 'max:255'],
-            'description' => ['nullable', 'string'],
             'status' => ['nullable', 'string', Rule::in(TaskStatus::values())],
             'priority' => ['nullable', 'string', Rule::in(TaskPriority::values())],
-            'assigned_to' => ['nullable', 'integer', 'exists:users,id'], //Ensuring the assigned user exists
-            'due_date' => ['nullable', 'date', new DueDateNotPast($this->input('status'))],
-            'tags' => ['nullable', 'array'],
-            'tags.*' => ['integer', 'exists:tags,id'],
-            'metadata' => ['nullable', 'array']
+            'assigned_to' => ['nullable', 'integer', 'exists:users,id'],
+            'tags' => ['nullable', 'string'],
+            'tags.*'       => ['integer', 'exists:tags,id'],
+            'due_date_from' => ['nullable', 'date'],
+            'due_date_to' => ['nullable', 'date'],
+            'keyword' => ['nullable', 'string', 'max:255'],
+            'sort_by' => ['nullable', 'string', Rule::in(['title', 'priority', 'due_date', 'created_at'])],
+            'sort_direction' => ['nullable', 'string', Rule::in(['asc', 'desc'])],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
+            'cursor' => ['nullable', 'string'], // For cursor-based pagination
         ];
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
+use App\Filters\TaskFilter;
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\TaskFilterRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
@@ -16,22 +18,39 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): JsonResponse
+    public function index(TaskFilterRequest $request): JsonResponse
     {
         // Authorize here anyonce can see any task, but will add filters for the admin and user
         $this->authorize('viewAny', Task::class);
 
+        // Adding the role based filter
         $user = Auth::user();
-
-        // If the authenticated user is an admin, return all tasks.
         if ($user->role === 'admin') {
-            $tasks = Task::all();
+            $tasks = Task::query();
         } else {
-            // Otherwise, return only the tasks assigned to the current user.
-            $tasks = Task::where('assigned_to', $user->id)->get();
+            $tasks = Task::where('assigned_to', $user->id);
         }
 
-        //$tasks = Task::with('user', 'tags')->get();
+        // Implement the filters using the scope
+        $tasks->filter($request);
+
+        // Sorting based on the requested field and direction
+        $sortBy = $request->input('sort_by', 'created_at');
+        $sortDirection = $request->input('sort_direction', 'desc');
+        $tasks->orderBy($sortBy, $sortDirection);
+
+        // Pagination methods for offset and cursor based
+        $perPage = $request->input('per_page', 10);
+
+        // If the 'cursor' parameter is present, use cursor pagination.
+        if ($request->has('cursor')) {
+            $tasks = $tasks->cursorPaginate($perPage);
+        } else {
+            // Otherwise, use standard offset-based pagination.
+            $tasks = $tasks->paginate($perPage);
+        }
+
+        // return the tasks based on the filters and sorting
         return response()->json($tasks);
     }
 
