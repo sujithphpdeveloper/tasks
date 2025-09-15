@@ -155,6 +155,10 @@ class TaskController extends Controller
     public function restore($id): JsonResponse
     {
         $task = Task::withTrashed()->findOrFail($id);
+
+        // Admin can restore any task and user can only restore their own tasks
+        $this->authorize('restore', $task);
+
         $task->restore();
 
         //Update the log when task restored

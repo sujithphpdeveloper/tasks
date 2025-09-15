@@ -51,14 +51,16 @@ class TaskPolicy
     public function delete(User $user, Task $task): bool
     {
         // Admins can delete any task but user can only delete the task assigned to them
-        return $user->role === 'admin' || $user->id === $task->assigned_to;    }
+        return $user->role === 'admin' || $user->id === $task->assigned_to;
+    }
 
     /**
      * Determine whether the user can restore the model.
      */
     public function restore(User $user, Task $task): bool
     {
-        return false;
+        // Admins can restore any task but user can only restore the task assigned to them
+        return $user->role === 'admin' || $user->id === $task->assigned_to;
     }
 
     /**
