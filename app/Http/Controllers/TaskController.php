@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function index(TaskFilterRequest $request): JsonResponse
     {
-        // Authorize here anyonce can see any task, but will add filters for the admin and user
+        // Authorize here anyone can see any task, but will add filters for the admin and user
         $this->authorize('viewAny', Task::class);
 
         // Adding the role based filter
