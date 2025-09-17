@@ -1,786 +1,829 @@
 {
-	"info": {
-		"_postman_id": "788d6aab-96be-441c-a904-c908ffd63f7d",
-		"name": "Tasks",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5943577"
-	},
-	"item": [
-		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/login?email=admin@example.com&password=password",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"login"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "admin@example.com"
-						},
-						{
-							"key": "password",
-							"value": "password"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Me",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/me",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Logout",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/logout",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"logout"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Task List",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/1?status=pending&priority=low&sort_by=created_at&sort_direction=desc",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"1"
-					],
-					"query": [
-						{
-							"key": "due_date_from",
-							"value": null,
-							"disabled": true
-						},
-						{
-							"key": "due_date_to",
-							"value": null,
-							"disabled": true
-						},
-						{
-							"key": "status",
-							"value": "pending"
-						},
-						{
-							"key": "priority",
-							"value": "low"
-						},
-						{
-							"key": "sort_by",
-							"value": "created_at"
-						},
-						{
-							"key": "sort_direction",
-							"value": "desc"
-						},
-						{
-							"key": "assigned_to",
-							"value": "1",
-							"disabled": true
-						},
-						{
-							"key": "tags[]",
-							"value": "1",
-							"disabled": true
-						},
-						{
-							"key": "tags[]",
-							"value": "2",
-							"disabled": true
-						},
-						{
-							"key": "cursor",
-							"value": "4",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Task",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create  Task",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks?title=title of the task&description&status=pending&priority=low&due_date=2025-12-08&assigned_to=&metadata[note]=testing&tags[]=6&tags[]=7",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks"
-					],
-					"query": [
-						{
-							"key": "title",
-							"value": "title of the task"
-						},
-						{
-							"key": "description",
-							"value": null
-						},
-						{
-							"key": "status",
-							"value": "pending"
-						},
-						{
-							"key": "priority",
-							"value": "low"
-						},
-						{
-							"key": "due_date",
-							"value": "2025-12-08"
-						},
-						{
-							"key": "assigned_to",
-							"value": ""
-						},
-						{
-							"key": "metadata[note]",
-							"value": "testing"
-						},
-						{
-							"key": "tags[]",
-							"value": "6"
-						},
-						{
-							"key": "tags[]",
-							"value": "7"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Task",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/1?title=&description&status=pending&priority=low&due_date=2025-12-08&assigned_to=&metadata[note]=testing&tags[]=6&tags[]=7&version=1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"1"
-					],
-					"query": [
-						{
-							"key": "title",
-							"value": ""
-						},
-						{
-							"key": "description",
-							"value": null
-						},
-						{
-							"key": "status",
-							"value": "pending"
-						},
-						{
-							"key": "priority",
-							"value": "low"
-						},
-						{
-							"key": "due_date",
-							"value": "2025-12-08"
-						},
-						{
-							"key": "assigned_to",
-							"value": ""
-						},
-						{
-							"key": "metadata[note]",
-							"value": "testing"
-						},
-						{
-							"key": "tags[]",
-							"value": "6"
-						},
-						{
-							"key": "tags[]",
-							"value": "7"
-						},
-						{
-							"key": "version",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Task",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Restore Task",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/90/restore",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"90",
-						"restore"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Toggle Task Status",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tasks/98/toggle-status",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tasks",
-						"98",
-						"toggle-status"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Tag List",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tags",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tags"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Tag Delete",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tags/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tags",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create  Tag",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tags?name=Account&color=%23ff00ff",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tags"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Account"
-						},
-						{
-							"key": "color",
-							"value": "%23ff00ff"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update  Tag",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer <update_your_token_here>",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/tags/1?name=Finance&color=%2300FF00",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"tags",
-						"1"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Finance"
-						},
-						{
-							"key": "color",
-							"value": "%2300FF00"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+    "info": {
+        "_postman_id": "788d6aab-96be-441c-a904-c908ffd63f7d",
+        "name": "Tasks",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "5943577"
+    },
+    "item": [
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/login?email=admin@example.com&password=password",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "login"
+                    ],
+                    "query": [
+                        {
+                            "key": "email",
+                            "value": "admin@example.com"
+                        },
+                        {
+                            "key": "password",
+                            "value": "password"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Me",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU3NzkwMDM4LCJleHAiOjE3NTc3OTM2MzgsIm5iZiI6MTc1Nzc5MDAzOCwianRpIjoiaGF0Zjk3NVdHWWVaQzIwVSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.zQVj0RLfY-LsAcJedC8_DaBEZC9qQPUX6dVOjW6343Y",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/me",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "me"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Logout",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQyOTgyLCJleHAiOjE3NTgwNDY1ODIsIm5iZiI6MTc1ODA0Mjk4MiwianRpIjoiUFk4bXdIRHJqbk43WEtKciIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.MJM7UhInggNxZDbKCytjRoqGcjf3wGzwnAAEmmbH7aQ",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/logout",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "logout"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Task List",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU3Nzg5MzE4LCJleHAiOjE3NTc3OTI5MTgsIm5iZiI6MTc1Nzc4OTMxOCwianRpIjoiSE5TekRMY3FNczhsbGxnbyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mxxkt53kpbZvM1llHVwSR_anf3jiy9x6tzDkCnh3SBo",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/1?status=pending&priority=low&sort_by=created_at&sort_direction=desc",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "1"
+                    ],
+                    "query": [
+                        {
+                            "key": "due_date_from",
+                            "value": null,
+                            "disabled": true
+                        },
+                        {
+                            "key": "due_date_to",
+                            "value": null,
+                            "disabled": true
+                        },
+                        {
+                            "key": "status",
+                            "value": "pending"
+                        },
+                        {
+                            "key": "priority",
+                            "value": "low"
+                        },
+                        {
+                            "key": "sort_by",
+                            "value": "created_at"
+                        },
+                        {
+                            "key": "sort_direction",
+                            "value": "desc"
+                        },
+                        {
+                            "key": "assigned_to",
+                            "value": "1",
+                            "disabled": true
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "1",
+                            "disabled": true
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "2",
+                            "disabled": true
+                        },
+                        {
+                            "key": "cursor",
+                            "value": "4",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Task",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDE3MzIxLCJleHAiOjE3NTgwMjA5MjEsIm5iZiI6MTc1ODAxNzMyMSwianRpIjoickk4dnNoNnFXeWxkeFNZZyIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.783hooVkes9IIES9NZp5UqHa6yeHBHIRz64QZ5MfmYE",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/1",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create  Task",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDE3MzIxLCJleHAiOjE3NTgwMjA5MjEsIm5iZiI6MTc1ODAxNzMyMSwianRpIjoickk4dnNoNnFXeWxkeFNZZyIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.783hooVkes9IIES9NZp5UqHa6yeHBHIRz64QZ5MfmYE",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks?title=title of the task&description&status=pending&priority=low&due_date=2025-12-08&assigned_to=&metadata[note]=testing&tags[]=6&tags[]=7",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks"
+                    ],
+                    "query": [
+                        {
+                            "key": "title",
+                            "value": "title of the task"
+                        },
+                        {
+                            "key": "description",
+                            "value": null
+                        },
+                        {
+                            "key": "status",
+                            "value": "pending"
+                        },
+                        {
+                            "key": "priority",
+                            "value": "low"
+                        },
+                        {
+                            "key": "due_date",
+                            "value": "2025-12-08"
+                        },
+                        {
+                            "key": "assigned_to",
+                            "value": ""
+                        },
+                        {
+                            "key": "metadata[note]",
+                            "value": "testing"
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "6"
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "7"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Task",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDE3MzIxLCJleHAiOjE3NTgwMjA5MjEsIm5iZiI6MTc1ODAxNzMyMSwianRpIjoickk4dnNoNnFXeWxkeFNZZyIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.783hooVkes9IIES9NZp5UqHa6yeHBHIRz64QZ5MfmYE",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/1?title=&description&status=pending&priority=low&due_date=2025-12-08&assigned_to=&metadata[note]=testing&tags[]=6&tags[]=7&version=1",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "1"
+                    ],
+                    "query": [
+                        {
+                            "key": "title",
+                            "value": ""
+                        },
+                        {
+                            "key": "description",
+                            "value": null
+                        },
+                        {
+                            "key": "status",
+                            "value": "pending"
+                        },
+                        {
+                            "key": "priority",
+                            "value": "low"
+                        },
+                        {
+                            "key": "due_date",
+                            "value": "2025-12-08"
+                        },
+                        {
+                            "key": "assigned_to",
+                            "value": ""
+                        },
+                        {
+                            "key": "metadata[note]",
+                            "value": "testing"
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "6"
+                        },
+                        {
+                            "key": "tags[]",
+                            "value": "7"
+                        },
+                        {
+                            "key": "version",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Task",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDE3MzIxLCJleHAiOjE3NTgwMjA5MjEsIm5iZiI6MTc1ODAxNzMyMSwianRpIjoickk4dnNoNnFXeWxkeFNZZyIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.783hooVkes9IIES9NZp5UqHa6yeHBHIRz64QZ5MfmYE",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/1",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Restore Task",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "PATCH",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDE3MzIxLCJleHAiOjE3NTgwMjA5MjEsIm5iZiI6MTc1ODAxNzMyMSwianRpIjoickk4dnNoNnFXeWxkeFNZZyIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.783hooVkes9IIES9NZp5UqHa6yeHBHIRz64QZ5MfmYE",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/90/restore",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "90",
+                        "restore"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Toggle Task Status",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "PATCH",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDIxMDcxLCJleHAiOjE3NTgwMjQ2NzEsIm5iZiI6MTc1ODAyMTA3MSwianRpIjoiZHI5YWNCYzhuZ3FlOUZnVSIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LJKwEbiv0xB0CQoWz8H-oMWXBF3S-ifhJZ1hptN0OPY",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tasks/98/toggle-status",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        "98",
+                        "toggle-status"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Tag List",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQyOTgyLCJleHAiOjE3NTgwNDY1ODIsIm5iZiI6MTc1ODA0Mjk4MiwianRpIjoiUFk4bXdIRHJqbk43WEtKciIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.MJM7UhInggNxZDbKCytjRoqGcjf3wGzwnAAEmmbH7aQ",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tags",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tags"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create  Tag",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQzMzkyLCJleHAiOjE3NTgwNDY5OTIsIm5iZiI6MTc1ODA0MzM5MiwianRpIjoiUnB3WFpxa2N3OUNBQXZhZCIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.AzDqhHW_Xh401Iw-EGQp84n_biOy5-bK8HOFteMx7c0",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tags?name=Account&color=%23ff00ff",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tags"
+                    ],
+                    "query": [
+                        {
+                            "key": "name",
+                            "value": "Account"
+                        },
+                        {
+                            "key": "color",
+                            "value": "%23ff00ff"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update  Tag",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQzMzkyLCJleHAiOjE3NTgwNDY5OTIsIm5iZiI6MTc1ODA0MzM5MiwianRpIjoiUnB3WFpxa2N3OUNBQXZhZCIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.AzDqhHW_Xh401Iw-EGQp84n_biOy5-bK8HOFteMx7c0",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tags/1?name=Finance&color=%2300FF00",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tags",
+                        "1"
+                    ],
+                    "query": [
+                        {
+                            "key": "name",
+                            "value": "Finance"
+                        },
+                        {
+                            "key": "color",
+                            "value": "%2300FF00"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Tag Delete",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQzMzkyLCJleHAiOjE3NTgwNDY5OTIsIm5iZiI6MTc1ODA0MzM5MiwianRpIjoiUnB3WFpxa2N3OUNBQXZhZCIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.AzDqhHW_Xh401Iw-EGQp84n_biOy5-bK8HOFteMx7c0",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tags/1",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tags",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "User List",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzU4MDQyOTgyLCJleHAiOjE3NTgwNDY1ODIsIm5iZiI6MTc1ODA0Mjk4MiwianRpIjoiUFk4bXdIRHJqbk43WEtKciIsInN1YiI6IjQwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.MJM7UhInggNxZDbKCytjRoqGcjf3wGzwnAAEmmbH7aQ",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/v1/tags",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "tags"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
 }

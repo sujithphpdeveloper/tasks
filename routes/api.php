@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
@@ -26,5 +27,7 @@ Route::prefix('v1')->group(function () {
         // Tag Controller Routes
         Route::apiResource('tags', TagController::class)->except(['show']);
 
+        // User Controller Routes, for the form and filters we need the list of users
+        Route::get('users', [UserController::class, 'index']);
     });
 });

@@ -738,6 +738,51 @@ Authorization: Bearer <jwt_token_received>
 }
 ```
 ---
+## User Endpoints
+For the forms and filters we need the user list
+
+| Method | Endpoint            | Description         |
+| --- |---------------------|---------------------|
+| GET    | `/api/v1/users`     | List all users      |
+
+
+**This endpoints require a valid Bearer JWT token in the Authorization header for authentication.**
+### 1. List All Users
+This API will retrieve all Users.
+
+**Request**
+```bash
+GET /api/v1/users
+Content-Type: application/json
+Authorization: Bearer <jwt_token_received>
+```
+**Success Response (200)**
+
+Response with all tags
+```bash
+[
+    {
+        "id": 1,
+        "name": "Admin"
+    },
+    {
+        "id": 2,
+        "name": "Demo User"
+    },
+    {
+        "id": 3,
+        "name": "Micaela Heathcote"
+    },
+    ...
+]
+```
+**Error Response (401)**
+```bash
+{
+    "message": "Unauthenticated."
+}
+```
+---
 
 ## Test Instructions
 
@@ -797,7 +842,29 @@ php artisan test --filter=TaskTest
 - Task belongs to assigned User   
 - Task has many Tags
 ---
+## Minimal Frontend
+A very simple single page application for implementing the APIs. 
 
+This application is built using the Laravel Blade, Bootstrap, JS and Axios.
+
+### Key Features
+- Login Form
+- JWT Token based authentication
+- Listing tasks with filters
+- Create/update/delete tasks
+- Toggle status
+- Filter by tag or assigned user
+- Restore soft-deleted tasks
+
+### How to Run the application
+This application is built as part of the same Laravel project. To run it locally, navigate to your project root directory and execute the following command:
+
+```bash
+php artisan serve
+```
+By default, it will run on `http://localhost:8000`. If that port is already in use, the command will automatically find and provide an alternative, available URL for you to access the application.
+
+You can use the same login credentials mentioned in the Authentication Endpoints to access the application.
 ## Postman Collection
 The requested Postman Collection is included in the project root directory
 

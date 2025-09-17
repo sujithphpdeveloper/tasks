@@ -37,6 +37,7 @@ class TaskFilterRequest extends FormRequest
             'sort_direction' => ['nullable', 'string', Rule::in(['asc', 'desc'])],
             'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
             'cursor' => ['nullable', 'string'], // For cursor-based pagination
+            'page' => ['nullable', 'integer'],
         ];
     }
 }

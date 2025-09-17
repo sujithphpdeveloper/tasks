@@ -27,9 +27,15 @@ class TaskController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
             $tasks = Task::query();
+            if ($request->has('assigned_to')) {
+                $tasks->where('assigned_to', $request->get('assigned_to'));
+            }
         } else {
             $tasks = Task::where('assigned_to', $user->id);
         }
+
+        $tasks->with(['tags', 'user']);
+        $tasks->withTrashed();
 
         // Implement the filters using the scope
         $tasks->filter($request);
@@ -38,6 +44,8 @@ class TaskController extends Controller
         $sortBy = $request->input('sort_by', 'created_at');
         $sortDirection = $request->input('sort_direction', 'desc');
         $tasks->orderBy($sortBy, $sortDirection);
+
+
 
         // Pagination methods for offset and cursor based
         $perPage = $request->input('per_page', 10);
