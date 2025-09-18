@@ -89,6 +89,17 @@ This will start the server at http://127.0.0.1:8000 and all APIs will be availab
 
 If the port 8000 is busy, the server will display the available URL after the command.
 
+### JWT Package
+
+The package is already added in the configuration file. 
+#### Publishing the configuration for JWT
+```bash
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+```
+#### Generate secret key for JWT
+```bash
+php artisan jwt:secret
+```
 ---
 
 ## API Endpoints
